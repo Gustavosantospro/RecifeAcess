@@ -1,35 +1,34 @@
 package com.apiacess.apiacess.controller;
 
-import java.util.List;
-
+import com.apiacess.apiacess.model.Company;
+import com.apiacess.apiacess.model.request.CompanyMapper;
+import com.apiacess.apiacess.model.request.CompanyRequest;
+import com.apiacess.apiacess.service.CompaniesService;
+import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import com.apiacess.apiacess.model.Estabelecimento;
-import com.apiacess.apiacess.repository.CompaniesRepository;
-
-@Controller
+@RestController
+@RequestMapping("/company")
 public class AcessController {
 
 	@Autowired
-	private CompaniesRepository companiesRepository;
+	private CompaniesService companiesService;
+
+	// adicionar estabelecimentos
+	@PostMapping("/addEstabelecimentos")
+	public ResponseEntity addCompany(@RequestBody CompanyRequest companyRequest){
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(companiesService.save(CompanyMapper.fromRequest(companyRequest)));
+	}
 	
-	// listar todos os estabelecimento
+	// listar Estabelecimentos
 	@GetMapping("/listarEstabelecimentos")
-	public List<Estabelecimento> getAllcompanies(){
-		
-		List<Estabelecimento> estabelecimentos = companiesRepository.findAll();		
-		return estabelecimentos;
+	public ResponseEntity findAll() {
+		return ResponseEntity.status(HttpStatus.OK).body(companiesService.findAll());
 	}
-	
-	// cadastro de Estabelecimentos
-	@PostMapping("/cadastrarEstabelecimento")
-	public void saveCompany(@RequestBody Estabelecimento company) {
-		companiesRepository.save(company);
-	}
-	
+
+
 }
