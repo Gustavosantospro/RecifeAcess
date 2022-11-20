@@ -1,6 +1,7 @@
 package com.apiacess.apiacess.model.request;
 
 import com.apiacess.apiacess.model.Address;
+import com.apiacess.apiacess.model.Category;
 import com.apiacess.apiacess.model.Company;
 import com.apiacess.apiacess.model.CompanyType;
 import lombok.AllArgsConstructor;
@@ -24,17 +25,17 @@ public class CompanyRequest {
     private String contact;
 
     private Address address;
+    //private Category category;
 
-    //private List<String> itensAcess;
-    //private int nivelAcesso;
 
-//    public static Company toDomain(CompanyRequest companyRequest) {
-//        return Company.builder()
-//                .name(companyRequest.name)
-//                .contact(companyRequest.contact)
-//                .companyType((CompanyType) companyRequest.companyType)
-//                .address(companyRequest.address)
-//                //.nivelAcesso(companyRequest.nivelAcesso)
-//                .build();
-//    }
+
+    public static Company toDomain(CompanyRequest companyRequest) {
+        return Company.builder()
+                .name(companyRequest.name)
+                .companyType((CompanyType) companyRequest.companyType)
+                .contact(companyRequest.contact)
+                .address(companyRequest.address)
+                //.category(companyRequest.category)
+                .build();
+    }
 }

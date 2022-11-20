@@ -11,21 +11,23 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Company {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "PK_COMPANY")
 	private Long id;
 	private String name;
 	private String contact;
 	private CompanyType companyType;
-	private int nivelAcesso;
+
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
-	@OneToMany
-	private Category category;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	private Category category;
 
-	
+
 }

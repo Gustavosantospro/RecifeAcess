@@ -21,7 +21,7 @@ public class AcessController {
 	@PostMapping("/addEstabelecimentos")
 	public ResponseEntity addCompany(@RequestBody CompanyRequest companyRequest){
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(companiesService.save(CompanyMapper.fromRequest(companyRequest)));
+				.body(companiesService.save(CompanyRequest.toDomain(companyRequest)));
 	}
 	
 	// listar Estabelecimentos

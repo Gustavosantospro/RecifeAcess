@@ -11,8 +11,8 @@ public class Category {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Company company;
+//    @OneToMany(mappedBy = "Company")
+//    private Company company;
 
-    private CompanyType companyType;
+    //private CompanyType companyType;
 }

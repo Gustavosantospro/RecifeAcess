@@ -6,22 +6,20 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String address;
     private String number;
     private String district;
     private Integer cep;
 
-    @OneToOne
-    private Company company;
+
+
 
 
 }
