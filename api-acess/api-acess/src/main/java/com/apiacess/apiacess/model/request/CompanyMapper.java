@@ -13,7 +13,7 @@ public class CompanyMapper {
                 .name(companyRequest.getName())
                 .address(companyRequest.getAddress())
                 .contact(companyRequest.getContact())
-                .companyType(companyRequest.getCompanyType())
+                //.companyType(companyRequest.getCompanyType())
                 .build();
     }
 }

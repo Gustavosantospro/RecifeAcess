@@ -14,25 +14,23 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Builder
+
 public class CompanyRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private CompanyType companyType;
     private String contact;
-
     private Address address;
-    //private Category category;
+    private Category category;
 
 
 
     public static Company toDomain(CompanyRequest companyRequest) {
         return Company.builder()
                 .name(companyRequest.name)
-                .companyType((CompanyType) companyRequest.companyType)
+                //.companyType((CompanyType) companyRequest.companyType)
                 .contact(companyRequest.contact)
                 .address(companyRequest.address)
                 //.category(companyRequest.category)

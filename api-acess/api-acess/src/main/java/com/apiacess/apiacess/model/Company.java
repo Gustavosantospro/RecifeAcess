@@ -16,18 +16,15 @@ public class Company {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "PK_COMPANY")
 	private Long id;
 	private String name;
 	private String contact;
-	private CompanyType companyType;
-
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	private Category category;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Category category;
 
 
 }
